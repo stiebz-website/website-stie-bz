@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STIE Bukit Zaitun Sorong - Modern</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand-1:#003a8c;
+      --brand-2:#005fcc;
+      --bg:#f5f7fb;
+      --card-bg:#ffffff;
+    }
+
+    *{box-sizing:border-box}
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background:var(--bg);
+      color:#243059;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+      color: white;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    header img { height:64px; width:auto }
+    header h1{ font-size:20px; margin:0; font-weight:600 }
+
+    /* NAVBAR */
+    nav{
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom:1px solid #eef2f7;
+    }
+    nav .container{ display:flex; align-items:center; justify-content:flex-end; padding:10px 28px }
+    nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:6px; align-items:center }
+    nav li{ position:relative }
+    nav a{ text-decoration:none; color:var(--brand-1); padding:10px 14px; display:block; border-radius:8px; font-weight:500 }
+    nav a:hover{ background:#f2f8ff; color:var(--brand-2) }
+
+    /* Dropdown */
+    nav li .dropdown{ display:none; position:absolute; top:44px; right:0; background:var(--card-bg); box-shadow:0 8px 24px rgba(15,23,42,0.08); border-radius:10px; overflow:hidden; min-width:200px }
+    nav li:hover .dropdown{ display:block }
+    nav li .dropdown a{ padding:10px 12px; color:var(--brand-1); font-weight:500 }
+    nav li .dropdown a:hover{ background:#f2f8ff }
+
+    /* LAYOUT SECTIONS */
+    main{ max-width:1100px; margin:30px auto; padding:0 20px }
+    section{ display:none }
+    .active{ display:block }
+
+    /* HERO / SLIDER */
+    .slider{ height:320px; border-radius:14px; overflow:hidden; box-shadow:0 6px 20px rgba(2,6,23,0.06); background:linear-gradient(180deg,#eef6ff, #ffffff); display:flex; align-items:center; justify-content:center }
+    .slides{ display:flex; width:300%; height:100%; animation:slide 12s infinite }
+    .slides img{ width:100%; height:100%; object-fit:cover }
+    @keyframes slide{ 0%{margin-left:0} 33%{margin-left:-100%} 66%{margin-left:-200%} 100%{margin-left:0} }
+
+    /* CARD */
+    .card{ background:var(--card-bg); padding:22px; border-radius:12px; box-shadow:0 6px 18px rgba(2,6,23,0.04); margin-bottom:24px }
+    h2{ margin-top:0 }
+
+    /* GRID */
+    .row{ display:flex; gap:20px; flex-wrap:wrap }
+    .col{ flex:1 }
+    .col.w-280{ max-width:280px }
+
+    /* TABLE */
+    table{ width:100%; border-collapse:collapse; margin-top:12px; border-radius:10px; overflow:hidden }
+    th{ text-align:left; padding:12px; background:var(--brand-2); color:white }
+    td{ padding:12px; border-bottom:1px solid #f1f5f9 }
+
+    /* FORM */
+    input, textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid #e6eef9; margin-top:8px }
+    button{ background:var(--brand-2); color:white; padding:12px 16px; border-radius:10px; border:none; cursor:pointer; font-weight:600 }
+    button:hover{ background:var(--brand-1) }
+
+    /* RESPONSIVE */
+    @media (max-width:800px){ header{ padding:12px 16px } nav .container{ padding:8px 16px } .slider{ height:200px } .row{ flex-direction:column } }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="Logo_STIE_Terbaru.png" alt="Logo STIE" />
+  <h1>STIE Bukit Zaitun Sorong</h1>
+</header>
+
+<nav>
+  <div class="container">
+    <ul>
+      <li><a href="#" onclick="show('home'); return false;">Home</a></li>
+      <li><a href="#" onclick="show('visi'); return false;">Visi & Misi Institusi</a></li>
+      <li><a href="#" onclick="show('akreditasi'); return false;">Akreditasi</a></li>
+      <li>
+        <a href="#" onclick="return false;">Prodi ▾</a>
+        <div class="dropdown" role="menu" aria-label="Prodi">
+          <a href="#" onclick="show('prodi-akuntansi'); return false;">Akuntansi</a>
+          <a href="#" onclick="show('prodi-ekbang'); return false;">Ekonomi Pembangunan</a>
+          <a href="#" onclick="show('prodi-manajemen'); return false;">Manajemen</a>
+        </div>
+      </li>
+      <li><a href="#" onclick="show('spmi'); return false;">SPMI</a></li>
+      <li><a href="#" onclick="show('lppm'); return false;">LPPM</a></li>
+      <li><a href="#" onclick="show('kontak'); return false;">Kontak</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <!-- HOME -->
+  <section id="home" class="active" aria-labelledby="home-title">
+    <div class="slider">
+      <div class="slides">
+        <img src="1.jpg" alt="Foto kegiatan 1" />
+        <img src="2.jpg" alt="Foto bersama dengan narasumber" />
+        <img src="3.jpg" alt="Foto seminar proposal" />
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="text-align:center;">Berita & Kegiatan</h2>
+<div class="row">
+        <div class="col w-280" style="text-align:center">
+          <img src="berita 1.jpg" alt="berita dan kegiatan" style="width:100%; border-radius:10px; box-shadow:0 6px 18px rgba(2,6,23,0.06)" />
+          <p style="font-weight:700; margin-top:10px">
+          <p style="color:#6b7280">
+        </div>
+      <!-- TEKS BERITA KANAN -->
+      <div class="col">
+        <p style="font-size:20px; line-height:1.6;">
+          Kunjungan Kepala Perwakilan Ombudsman RI Perwakilan Papua Barat dalam kuliah umum bersama mahasiswa, dosen, dan staf STIE Bukit Zaitun. Acara diawali dengan pembukaan oleh Waket III dan arahan serta ucapan terima kasih dari Ibu Ketua.
+Kegiatan diakhiri dengan penyerahan cenderamata dari Ombudsman kepada Ketua STIE BZ. Dalam beberapa hari ke depan akan dilanjutkan dengan penandatanganan MOU setelah draf dipelajari bersama.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- VISI MISI -->
+<section id="visi" aria-labelledby="visi-title">
+<div class="card">
+<h2 style="text-align:center;">Visi & Misi STIE Bukit Zaitun Sorong</h2>
+<div class="row">
+<!-- FOTO SEBELAH KIRI -->
+<div class="col w-280" style="text-align:center">
+<img src="yayasan.jpg" alt="Pemilik Yayasan" style="width:100%; border-radius:10px; box-shadow:0 6px 18px rgba(2,6,23,0.06)" />
+<p style="font-weight:600; margin-top:10px">Pemilik Yayasan</p>
+</div>
+
+
+<!-- VISI MISI SEBELAH KANAN -->
+<div class="col">
+<h3>Visi:</h3>
+<p>Menjadi perguruan tinggi unggul dalam pengembangan ekonomi dan bisnis berbasis nilai-nilai Kristiani.</p>
+
+
+<h3>Misi:</h3>
+<ul>
+<li>Menyelenggarakan pendidikan berkualitas.</li>
+<li>Melakukan penelitian yang bermanfaat bagi masyarakat.</li>
+<li>Melaksanakan pengabdian masyarakat berbasis pemberdayaan.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+  <!-- AKREDITASI -->
+<section id="akreditasi" aria-labelledby="akreditasi-title">
+<div class="card">
+<h2 style="text-align:center;">Akreditasi</h2>
+<p><strong>Institusi:</strong> Baik Sekali — <a href="#" aria-label="Download sertifikat institusi">Download Sertifikat</a></p>
+<p><strong>Prodi Akuntansi:</strong> Baik — <a href="sertifikat-akuntansi.pdf" target="_blank" aria-label="Download sertifikat prodi akuntansi">Download Sertifikat (PDF)</a></p>
+<p><strong>Prodi Ekonomi Pembangunan:</strong> Baik — <a href="Sertifikat Akreditasi Ekbang.pdf" target="_blank" aria-label="Download sertifikat prodi ekbang">Download Sertifikat (PDF)</a></p>
+<p><strong>Prodi Manajemen:</strong> Baik — <a href="sertifikat-manajemen.pdf" target="_blank" aria-label="Download sertifikat prodi manajemen">Download Sertifikat (PDF)</a></p>
+</div>
+</section>
+  <!-- PRODI AKUNTANSI -->
+  <section id="prodi-akuntansi" aria-labelledby="pa-title">
+    <div class="card">
+      <h2 style="text-align:center;">Prodi Akuntansi</h2>
+      <div class="row">
+        <div class="col w-280" style="text-align:center">
+          <img src="Akuntansi.jpg" alt="Kaprodi Akuntansi" style="width:100%; border-radius:10px; box-shadow:0 6px 18px rgba(2,6,23,0.06)" />
+          <p style="font-weight:700; margin-top:10px">Ferdinand Nuru, SE., MSA</p>
+          <p style="color:#6b7280">Kaprodi Akuntansi</p>
+        </div>
+        <div class="col">
+          <h3>Visi:</h3>
+          <p>Menjadi program studi unggul dalam akuntansi berbasis digital.</p>
+<!-- 🔹 MISI TAMBAHAN -->
+        <h3>Misi:</h3>
+        <ul>
+          <li>Menyelenggarakan pendidikan akuntansi yang adaptif terhadap perkembangan teknologi digital.</li>
+          <li>Melaksanakan penelitian di bidang akuntansi yang bermanfaat bagi dunia usaha dan masyarakat.</li>
+          <li>Menerapkan pengabdian kepada masyarakat berbasis pemberdayaan dan literasi akuntansi.</li>
+          <li>Meningkatkan kompetensi mahasiswa melalui kolaborasi dengan industri, lembaga keuangan, dan instansi pemerintah.</li>
+        </ul>
+          <h3>Mata Kuliah Wajib:</h3>
+          <table>
+            <tr><th>No.</th><th>Mata Kuliah</th><th>SKS</th></tr>
+            <tr><td>1</td><td>Pengantar Akuntansi</td><td>3</td></tr>
+            <tr><td>2</td><td>Akuntansi Keuangan</td><td>3</td></tr>
+          </table>
+
+          <h3 style="margin-top:14px">Mata Kuliah Pilihan:</h3>
+          <table>
+            <tr><th>No.</th><th>Mata Kuliah</th><th>SKS</th></tr>
+            <tr><td>1</td><td>Audit Forensik</td><td>3</td></tr>
+            <tr><td>2</td><td>Akuntansi Sektor Publik</td><td>3</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODI EKBANG -->
+  <section id="prodi-ekbang" aria-labelledby="pe-title">
+    <div class="card">
+      <h2 style="text-align:center;">Prodi Ekonomi Pembangunan</h2>
+      <div class="row">
+        <div class="col w-280" style="text-align:center">
+          <img src="Ekbangjpg.jpg" alt="Kaprodi Ekbang" style="width:100%; border-radius:10px; box-shadow:0 6px 18px rgba(2,6,23,0.06)" />
+          <p style="font-weight:700; margin-top:10px">Nurlela, SE., M.Si</p>
+          <p style="color:#6b7280">Kaprodi Ekonomi Pembangunan</p>
+        </div>
+        <div class="col">
+          <h3>Visi:</h3>
+          <p>Menjadi pusat kajian ekonomi pembangunan berkelanjutan.</p>
+ <!-- 🔹 MISI TAMBAHAN -->
+        <h3>Misi:</h3>
+        <ul>
+          <li>Menyelenggarakan pendidikan yang menghasilkan lulusan kompeten di bidang ekonomi pembangunan.</li>
+          <li>Melaksanakan penelitian yang mendukung kebijakan pembangunan berkelanjutan.</li>
+          <li>Meningkatkan kontribusi melalui pengabdian masyarakat berbasis pemberdayaan ekonomi lokal.</li>
+          <li>Menjalin kerja sama dengan pemerintah dan lembaga terkait untuk pengembangan potensi daerah.</li>
+        </ul>
+
+          <h3>Mata Kuliah Wajib:</h3>
+          <table>
+            <tr><th>No</th><th>Mata Kuliah</th><th>SKS</th></tr>
+            <tr><td>1</td><td>Ekonomi Mikro</td><td>3</td></tr>
+            <tr><td>2</td><td>Ekonomi Makro</td><td>3</td></tr>
+          </table>
+
+          <h3 style="margin-top:14px">Mata Kuliah Pilihan:</h3>
+          <table>
+            <tr><th>No</th><th>Mata Kuliah</th><th>SKS</th></tr>
+            <tr><td>1</td><td>Ekonomi Regional</td><td>3</td></tr>
+            <tr><td>2</td><td>Ekonomi Sumber Daya</td><td>3</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODI MANAJEMEN -->
+  <section id="prodi-manajemen" aria-labelledby="pm-title">
+    <div class="card">
+      <h2 style="text-align:center;">Prodi Manajemen</h2>
+      <div class="row">
+        <div class="col w-280" style="text-align:center">
+          <img src="MANAJEMEN.jpg" alt="Kaprodi Manajemen" style="width:100%; border-radius:10px; box-shadow:0 6px 18px rgba(2,6,23,0.06)" />
+          <p style="font-weight:700; margin-top:10px">Anthonetha Kopong, SE., M.M</p>
+          <p style="color:#6b7280">Kaprodi Manajemen</p>
+        </div>
+        <div class="col">
+          <h3>Visi:</h3>
+          <p>Menjadi prodi manajemen unggul berorientasi entrepreneur.</p>
+<!-- 🔹 MISI TAMBAHAN -->
+        <h3>Misi:</h3>
+        <ul>
+          <li>Menyelenggarakan pendidikan manajemen yang inovatif dan berorientasi pada kewirausahaan.</li>
+          <li>Melaksanakan penelitian yang mendukung pengembangan ilmu manajemen dan bisnis.</li>
+          <li>Mengimplementasikan pengabdian kepada masyarakat dalam bidang manajemen dan kewirausahaan.</li>
+          <li>Membangun jejaring kerja sama dengan dunia usaha, industri, dan institusi pemerintah.</li>
+        </ul>
+          <h3>Mata Kuliah Wajib:</h3>
+          <table>
+            <tr><th>No</th><th>Mata Kuliah</th><th>SKS</th></tr>
+            <tr><td>1</td><td>Manajemen Pemasaran</td><td>3</td></tr>
+            <tr><td>2</td><td>Manajemen Keuangan</td><td>3</td></tr>
+          </table>
+
+          <h3 style="margin-top:14px">Mata Kuliah Pilihan:</h3>
+          <table>
+            <tr><th>No</th><th>Mata Kuliah</th><th>SKS</th></tr>
+            <tr><td>1</td><td>Kewirausahaan</td><td>3</td></tr>
+            <tr><td>2</td><td>Manajemen SDM</td><td>3</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPMI -->
+  <section id="spmi" aria-labelledby="spmi-title">
+    <div class="card">
+      <h2 style="text-align:center;">SPMI</h2>
+      <p>Informasi Sistem Penjaminan Mutu Internal STIE Bukit Zaitun.</p>
+    </div>
+  </section>
+
+  <!-- LPPM -->
+  <section id="lppm" aria-labelledby="lppm-title">
+    <div class="card">
+      <h2 style="text-align:center;">LPPM</h2>
+      <div class="row">
+        <div class="col w-280" style="text-align:center">
+          <img src="LPPM.jpg" alt="Kepala LPPM" style="width:100%; border-radius:10px; box-shadow:0 6px 18px rgba(2,6,23,0.06)" />
+          <p style="font-weight:700; margin-top:10px">DR. James Kastanya SE.,M.M</p>
+          <p style="color:#6b7280">Lembaga Penelitian dan Pengabdian kepada Masyarakat</p>
+        </div>
+        <div class="col">
+          <h3>Visi & Misi LPPM</h3>
+          <p>Menjadi lembaga penelitian & pengabdian yang handal dan berdampak bagi masyarakat lokal dan regional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAK -->
+  <section id="kontak" aria-labelledby="kontak-title">
+    <div class="card">
+      <h2 style="text-align:center;">Kontak Kami</h2>
+      <div class="row">
+        <div class="col w-280">
+          <h4>Informasi Kontak</h4>
+          <p><strong>Alamat:</strong><br>Jl. Basuki Rahmat Km. 11,5, Kota Sorong, Papua Barat Daya</p>
+          <p><strong>Email:</strong><br><a href="mailto:info@stiebukitzaitun.ac.id">info@stiebukitzaitun.ac.id</a></p>
+          <p><strong>Telepon:</strong><br>0812-3456-7890</p>
+        </div>
+        <div class="col">
+          <h4>Formulir Kontak</h4>
+          <form action="mailto:info@stiebukitzaitun.ac.id" method="post" enctype="text/plain" onsubmit="alert('Formulir akan membuka aplikasi email Anda.');">
+            <label>Nama</label>
+            <input type="text" name="nama" required>
+
+            <label>Email</label>
+            <input type="email" name="email" required>
+
+            <label>Pesan</label>
+            <textarea name="pesan" rows="5" required></textarea>
+
+            <button type="submit">Kirim</button>
+          </form>
+        </div>
+      </div>
+
+      <hr style="margin:18px 0; border:none; border-top:1px solid #eef2f7">
+      <h4>Lokasi</h4>
+      <div style="width:100%; height:300px; border-radius:10px; overflow:hidden; box-shadow:0 6px 18px rgba(2,6,23,0.06);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d318.12620809354565!2d131.3009721!3d-0.8863976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d59552275c5e8bf%3A0xc5731ac17ea61b0a!2sSTIE%20Bukit%20Zaitun!5e1!3m2!1sid!2sid!4v1700000000000"
+          width="100%" height="100%" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  /**
+   * Safe show(page)
+   * - hides all sections
+   * - shows the requested section if it exists
+   * - falls back to #home and logs a warning if requested id not found
+   */
+  function show(page){
+    // remove active from all sections
+    document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active'));
+
+    // try to get the element
+    var el = document.getElementById(page);
+    if(!el){
+      console.warn("show(): section with id '%s' not found — falling back to #home", page);
+      var fallback = document.getElementById('home');
+      if(fallback) fallback.classList.add('active');
+      return false;
+    }
+
+    el.classList.add('active');
+    // for accessibility, move focus to the heading inside the section if present
+    var h = el.querySelector('h2, h1');
+    if(h) h.setAttribute('tabindex','-1'), h.focus();
+    return false; // prevent default for inline onclick handlers
+  }
+
+  // Ensure at least home is visible on load
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!document.querySelector('main section.active')){
+      var home = document.getElementById('home');
+      if(home) home.classList.add('active');
+    }
+  });
+</script>
+
+</body>
+</html>
